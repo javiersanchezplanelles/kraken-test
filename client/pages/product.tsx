@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 import { useState } from 'react';
 import client from '../apolloClient';
 import { Header } from '../components/Header';
-import { ProductImage } from '../components/ProductImage';
+import { ProductDetail } from '../components/ProductDetail';
 
 export const PRODUCT_QUERY = gql`
   query PRODUCT_QUERY($id: ID!) {
@@ -58,36 +58,15 @@ interface Props {
 }
 
 export default function Product({ product }: Props) {
-  const [productQuantity, setProductQuantity] = useState(1);
-  const [productsOnCart, setProductsOnCart] = useState(null);
-
-  const handleIncreaseQuantity = () =>
-    setProductQuantity((prevState) => prevState + 1);
-
-  const handleReduceQuantity = () =>
-    setProductQuantity((prevState) => prevState - 1);
-
-  const handleAddToCart = () => {
-    setProductsOnCart((prevState: number) => prevState + productQuantity);
-    setProductQuantity(1);
-  };
+  const [productsOnCart, setProductsOnCart] = useState<number | null>(null);
 
   return (
     <>
       <Header productsOnCart={productsOnCart} />
-      <ProductImage imageUrl={product.img_url} />
-      <h1> {product.name}</h1>
-      <p> {product.power}</p>
-      <p> {product.quantity}</p>
-      {product.price}GBP
-      <div>
-        <button onClick={handleReduceQuantity} disabled={productQuantity === 1}>
-          -
-        </button>
-        <span title='Current quantity'>{productQuantity}</span>
-        <button onClick={handleIncreaseQuantity}>+</button>
-      </div>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <ProductDetail
+        product={product}
+        updateProductsOnCart={setProductsOnCart}
+      />
     </>
   );
 }
