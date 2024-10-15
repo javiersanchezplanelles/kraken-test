@@ -59,6 +59,7 @@ interface Props {
 
 export default function Product({ product }: Props) {
   const [productQuantity, setProductQuantity] = useState(1);
+  const [productsOnCart, setProductsOnCart] = useState(null);
 
   const handleIncreaseQuantity = () =>
     setProductQuantity((prevState) => prevState + 1);
@@ -66,9 +67,14 @@ export default function Product({ product }: Props) {
   const handleReduceQuantity = () =>
     setProductQuantity((prevState) => prevState - 1);
 
+  const handleAddToCart = () => {
+    setProductsOnCart((prevState: number) => prevState + productQuantity);
+    setProductQuantity(1);
+  };
+
   return (
     <>
-      <Header />
+      <Header productsOnCart={productsOnCart} />
       <ProductImage imageUrl={product.img_url} />
       <h1> {product.name}</h1>
       <p> {product.power}</p>
@@ -81,7 +87,7 @@ export default function Product({ product }: Props) {
         <span title='Current quantity'>{productQuantity}</span>
         <button onClick={handleIncreaseQuantity}>+</button>
       </div>
-      <button>Add to cart</button>
+      <button onClick={handleAddToCart}>Add to cart</button>
     </>
   );
 }
