@@ -1,15 +1,5 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Cart } from './Cart';
-
-const HeaderWrapper = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-height: 80px;
-  height: 100%;
-  padding: 0 20px;
-`;
 
 const CartWrapper = styled.div`
   position: relative;
@@ -31,14 +21,16 @@ const ProductQuantity = styled.div`
 `;
 
 interface Props {
-  productsOnCart: number;
+  productsAmount: number;
 }
 
-export const Header = ({ productsOnCart }: Props) => {
+export const Cart = ({ productsAmount }: Props) => {
   return (
-    <HeaderWrapper>
-      <Image src='/octopus-logo.svg' width={150} height={150} />
-      <Cart productsAmount={productsOnCart} />
-    </HeaderWrapper>
+    <CartWrapper>
+      {productsAmount && (
+        <ProductQuantity title='Basket items'>{productsAmount}</ProductQuantity>
+      )}
+      <Image src='/basket.svg' width={30} height={30} />
+    </CartWrapper>
   );
 };
