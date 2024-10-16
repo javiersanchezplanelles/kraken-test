@@ -7,6 +7,7 @@ const HeaderWrapper = styled.header`
   align-items: center;
   max-height: 80px;
   height: 100%;
+  padding: 0 20px;
 `;
 
 const CartWrapper = styled.div`
@@ -14,16 +15,19 @@ const CartWrapper = styled.div`
 `;
 
 const ProductQuantity = styled.div`
-  background-color: var(--ice);
+  position: absolute;
+  right: -10px;
+  bottom: 25px;
+  background-color: var(--sohoLights);
   color: var(--siphon);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 `;
+
 interface Props {
   productsOnCart: number;
 }

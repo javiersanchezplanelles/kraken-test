@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  width: 36px;
+  width: 34px;
   background-color: ${(props) =>
     props.disabled ? 'var(--plum)' : 'var(--sohoLights)'};
   color: ${(props) =>
     props.disabled ? 'var(--purpleHaze)' : 'var(--hemocyanin)'};
-  border-radius: 15px;
+  border-radius: 12px;
   padding: 8px 0;
   font-family: Gotham;
   font-weight: 600;
