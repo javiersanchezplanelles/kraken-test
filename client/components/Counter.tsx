@@ -11,12 +11,14 @@ const Button = styled.button`
   font-family: Gotham;
   font-weight: 600;
   border: none;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
 const Text = styled.p`
   font-size: 12px;
   text-align: center;
   margin: 0 0 4px;
+  font-weight: 100;
 `;
 
 const CounterWrapper = styled.div`

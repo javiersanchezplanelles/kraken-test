@@ -8,6 +8,7 @@ const Button = styled.button`
   font-family: Gotham;
   font-weight: 600;
   border: none;
+  cursor: pointer;
 `;
 
 interface Props {
