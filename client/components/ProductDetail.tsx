@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Product } from '../domain/product.types';
+import { Product } from '../domain/product/product.types';
 import { ContentBlock } from './ContentBlock';
 import { Counter } from './Counter';
 import { CtaButton } from './CtaButton';
@@ -28,7 +28,7 @@ const ProductImageWrapper = styled.div`
   }
 `;
 
-const PriceQuantityWrapper = styled.div`
+const PriceCounterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -110,14 +110,14 @@ export const ProductDetail = ({ product, updateProductsOnBasket }: Props) => {
           <Subheading>
             {product.power} // Packet of {product.quantity}
           </Subheading>
-          <PriceQuantityWrapper>
+          <PriceCounterWrapper>
             <Price total={product.price} />
             <Counter
               currentQuantity={productQuantity}
               handleIncreaseClick={handleIncreaseQuantity}
               handleDecreaseClick={handleReduceQuantity}
             />
-          </PriceQuantityWrapper>
+          </PriceCounterWrapper>
           <CtaButton text='Add to cart' handleClick={handleAddToBasket} />
         </TopContentWrapper>
         <ContentBlockWrapper>

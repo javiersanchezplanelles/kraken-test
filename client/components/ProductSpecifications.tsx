@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import type { ProductSpecifications as ProductSpecificationsType } from '../domain/product.types';
+import type { ProductSpecifications as ProductSpecificationsType } from '../domain/product/product.types';
 
 interface Props {
   content: ProductSpecificationsType;
