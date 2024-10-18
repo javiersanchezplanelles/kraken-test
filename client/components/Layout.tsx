@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Footer } from './Footer';
 import { Header } from './Header';
@@ -13,7 +14,12 @@ const MainContent = styled.main`
   margin-top: 10px;
 `;
 
-export const Layout = ({ children, productsOnBasket }) => {
+interface Props {
+  children: ReactNode;
+  productsOnBasket?: number;
+}
+
+export const Layout = ({ children, productsOnBasket }: Props) => {
   return (
     <LayoutWrapper>
       <Header productsOnBasket={productsOnBasket} />

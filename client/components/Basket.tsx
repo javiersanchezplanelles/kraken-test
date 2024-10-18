@@ -8,7 +8,7 @@ const BasketWrapper = styled.div`
 const ProductQuantity = styled.div`
   position: absolute;
   right: -10px;
-  bottom: 25px;
+  bottom: 22px;
   background-color: var(--sohoLights);
   color: var(--siphon);
   border-radius: 50%;
@@ -26,7 +26,7 @@ interface Props {
 export const Basket = ({ productsAmount }: Props) => {
   return (
     <BasketWrapper>
-      {productsAmount && (
+      {productsAmount > 0 && (
         <ProductQuantity title='Basket items'>{productsAmount}</ProductQuantity>
       )}
       <Image src='/basket.svg' width={25} height={25} alt='Shopping basket' />

@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import Link from 'next/link';
+import styled, { css } from 'styled-components';
 
-const Button = styled.button`
+const SharedStyles = css`
+  display: block;
   width: 100%;
   background-color: var(--sohoLights);
   border-radius: 15px;
@@ -9,13 +11,30 @@ const Button = styled.button`
   font-weight: 600;
   border: none;
   cursor: pointer;
+  text-align: center;
+`;
+
+const StyledButton = styled.button`
+  ${SharedStyles}
+`;
+
+const StyledLink = styled.a`
+  text-decoration: none;
+  ${SharedStyles};
 `;
 
 interface Props {
   text: string;
-  handleClick: () => void;
+  handleClick?: () => void;
+  href?: string;
 }
 
-export const CtaButton = ({ text, handleClick }: Props) => {
-  return <Button onClick={handleClick}>{text}</Button>;
+export const CtaButton = ({ text, handleClick, href }: Props) => {
+  return href ? (
+    <Link href={href}>
+      <StyledLink>{text}</StyledLink>
+    </Link>
+  ) : (
+    <StyledButton onClick={handleClick}>{text}</StyledButton>
+  );
 };
