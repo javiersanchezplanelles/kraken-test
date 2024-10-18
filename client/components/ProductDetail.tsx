@@ -10,7 +10,7 @@ import { ProductSpecifications } from './ProductSpecifications';
 
 interface Props {
   product: Product;
-  updateProductsOnCart: Dispatch<SetStateAction<number>>;
+  updateProductsOnBasket: Dispatch<SetStateAction<number>>;
 }
 
 const basePadding = css`
@@ -84,7 +84,7 @@ const TopContentWrapper = styled.div`
   }
 `;
 
-export const ProductDetail = ({ product, updateProductsOnCart }: Props) => {
+export const ProductDetail = ({ product, updateProductsOnBasket }: Props) => {
   const [productQuantity, setProductQuantity] = useState(1);
   const { height, width, length, colour, brand, weight, model_code } = product;
 
@@ -94,8 +94,8 @@ export const ProductDetail = ({ product, updateProductsOnCart }: Props) => {
   const handleReduceQuantity = () =>
     setProductQuantity((prevState) => prevState - 1);
 
-  const handleAddToCart = () => {
-    updateProductsOnCart((prevState: number) => prevState + productQuantity);
+  const handleAddToBasket = () => {
+    updateProductsOnBasket((prevState: number) => prevState + productQuantity);
     setProductQuantity(1);
   };
 
@@ -118,7 +118,7 @@ export const ProductDetail = ({ product, updateProductsOnCart }: Props) => {
               handleDecreaseClick={handleReduceQuantity}
             />
           </PriceQuantityWrapper>
-          <CtaButton text='Add to cart' handleClick={handleAddToCart} />
+          <CtaButton text='Add to cart' handleClick={handleAddToBasket} />
         </TopContentWrapper>
         <ContentBlockWrapper>
           <ContentBlock heading='Description' content={product.description} />

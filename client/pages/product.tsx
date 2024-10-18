@@ -27,16 +27,16 @@ interface Props {
 }
 
 export default function Product({ product }: Props) {
-  const [productsOnCart, setProductsOnCart] = useState<number | null>(null);
+  const [productsOnBasket, setProductsOnBasket] = useState<number | null>(null);
 
   return (
-    <Layout productsOnCart={productsOnCart}>
+    <Layout productsOnBasket={productsOnBasket}>
       <Head>
         <title>Product page</title>
       </Head>
       <ProductDetail
         product={product}
-        updateProductsOnCart={setProductsOnCart}
+        updateProductsOnBasket={setProductsOnBasket}
       />
     </Layout>
   );

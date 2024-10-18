@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Cart } from './Cart';
+import { Basket } from './Basket';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -11,7 +11,7 @@ const HeaderWrapper = styled.header`
   padding: 0 20px;
 `;
 
-const CartWrapper = styled.div`
+const BasketWrapper = styled.div`
   position: relative;
 `;
 
@@ -31,10 +31,10 @@ const ProductQuantity = styled.div`
 `;
 
 interface Props {
-  productsOnCart: number;
+  productsOnBasket: number;
 }
 
-export const Header = ({ productsOnCart }: Props) => {
+export const Header = ({ productsOnBasket }: Props) => {
   return (
     <HeaderWrapper>
       <Image
@@ -43,7 +43,7 @@ export const Header = ({ productsOnCart }: Props) => {
         height={150}
         alt='Octopus logo'
       />
-      <Cart productsAmount={productsOnCart} />
+      <Basket productsAmount={productsOnBasket} />
     </HeaderWrapper>
   );
 };

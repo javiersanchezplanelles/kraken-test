@@ -12,10 +12,10 @@ const MainContent = styled.main`
   flex: 1;
 `;
 
-export const Layout = ({ children, productsOnCart }) => {
+export const Layout = ({ children, productsOnBasket }) => {
   return (
     <LayoutWrapper>
-      <Header productsOnCart={productsOnCart} />
+      <Header productsOnBasket={productsOnBasket} />
       <MainContent> {children}</MainContent>
       <Footer />
     </LayoutWrapper>
