@@ -4,6 +4,7 @@ const FooterWrapper = styled.footer`
   padding: 25px 20px;
   color: var(--purpleHaze);
   background-color: var(--hemocyanin);
+  line-height: 1.5;
 `;
 
 const Text = styled.p`

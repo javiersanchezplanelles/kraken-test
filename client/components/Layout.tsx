@@ -10,6 +10,7 @@ const LayoutWrapper = styled.div`
 
 const MainContent = styled.main`
   flex: 1;
+  margin-top: 10px;
 `;
 
 export const Layout = ({ children, productsOnBasket }) => {

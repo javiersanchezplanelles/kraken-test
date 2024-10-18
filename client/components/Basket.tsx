@@ -29,7 +29,7 @@ export const Basket = ({ productsAmount }: Props) => {
       {productsAmount && (
         <ProductQuantity title='Basket items'>{productsAmount}</ProductQuantity>
       )}
-      <Image src='/basket.svg' width={30} height={30} alt='Shopping basket' />
+      <Image src='/basket.svg' width={25} height={25} alt='Shopping basket' />
     </BasketWrapper>
   );
 };
