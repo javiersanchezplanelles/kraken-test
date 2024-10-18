@@ -6,28 +6,9 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: 80px;
+  max-height: 60px;
   height: 100%;
   padding: 0 20px;
-`;
-
-const BasketWrapper = styled.div`
-  position: relative;
-`;
-
-const ProductQuantity = styled.div`
-  position: absolute;
-  right: -10px;
-  bottom: 25px;
-  background-color: var(--sohoLights);
-  color: var(--siphon);
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px;
 `;
 
 interface Props {
