@@ -15,6 +15,7 @@ export const ProductImage = ({ imageUrl }: Props) => {
   return (
     <ImageWrapper>
       <Image
+        alt='Product'
         src={imageUrl}
         layout='responsive'
         width={300}

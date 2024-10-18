@@ -37,7 +37,12 @@ interface Props {
 export const Header = ({ productsOnCart }: Props) => {
   return (
     <HeaderWrapper>
-      <Image src='/octopus-logo.svg' width={150} height={150} />
+      <Image
+        src='/octopus-logo.svg'
+        width={150}
+        height={150}
+        alt='Octopus logo'
+      />
       <Cart productsAmount={productsOnCart} />
     </HeaderWrapper>
   );

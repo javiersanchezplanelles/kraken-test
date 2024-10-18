@@ -12,12 +12,11 @@ const ProductQuantity = styled.div`
   background-color: var(--sohoLights);
   color: var(--siphon);
   border-radius: 50%;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4px;
 `;
 
 interface Props {
@@ -30,7 +29,7 @@ export const Cart = ({ productsAmount }: Props) => {
       {productsAmount && (
         <ProductQuantity title='Basket items'>{productsAmount}</ProductQuantity>
       )}
-      <Image src='/basket.svg' width={30} height={30} />
+      <Image src='/basket.svg' width={30} height={30} alt='Shopping basket' />
     </CartWrapper>
   );
 };
