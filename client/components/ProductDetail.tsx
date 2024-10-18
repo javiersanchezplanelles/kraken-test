@@ -100,43 +100,41 @@ export const ProductDetail = ({ product, updateProductsOnCart }: Props) => {
   };
 
   return (
-    <div>
-      <FlexWrapper>
-        <ProductImageWrapper>
-          <ProductImage imageUrl={product.img_url} />
-        </ProductImageWrapper>
-        <FlexColumnWrapper>
-          <TopContentWrapper>
-            <Heading>{product.name}</Heading>
-            <Subheading>
-              {product.power} // Packet of {product.quantity}
-            </Subheading>
-            <PriceQuantityWrapper>
-              <Price total={product.price} />
-              <Counter
-                currentQuantity={productQuantity}
-                handleIncreaseClick={handleIncreaseQuantity}
-                handleDecreaseClick={handleReduceQuantity}
-              />
-            </PriceQuantityWrapper>
-            <CtaButton text='Add to cart' handleClick={handleAddToCart} />
-          </TopContentWrapper>
-          <ContentBlockWrapper>
-            <ContentBlock heading='Description' content={product.description} />
-          </ContentBlockWrapper>
-          <ProductSpecifications
-            content={{
-              height,
-              width,
-              length,
-              colour,
-              brand,
-              weight,
-              model_code,
-            }}
-          />
-        </FlexColumnWrapper>
-      </FlexWrapper>
-    </div>
+    <FlexWrapper>
+      <ProductImageWrapper>
+        <ProductImage imageUrl={product.img_url} />
+      </ProductImageWrapper>
+      <FlexColumnWrapper>
+        <TopContentWrapper>
+          <Heading>{product.name}</Heading>
+          <Subheading>
+            {product.power} // Packet of {product.quantity}
+          </Subheading>
+          <PriceQuantityWrapper>
+            <Price total={product.price} />
+            <Counter
+              currentQuantity={productQuantity}
+              handleIncreaseClick={handleIncreaseQuantity}
+              handleDecreaseClick={handleReduceQuantity}
+            />
+          </PriceQuantityWrapper>
+          <CtaButton text='Add to cart' handleClick={handleAddToCart} />
+        </TopContentWrapper>
+        <ContentBlockWrapper>
+          <ContentBlock heading='Description' content={product.description} />
+        </ContentBlockWrapper>
+        <ProductSpecifications
+          content={{
+            height,
+            width,
+            length,
+            colour,
+            brand,
+            weight,
+            model_code,
+          }}
+        />
+      </FlexColumnWrapper>
+    </FlexWrapper>
   );
 };
