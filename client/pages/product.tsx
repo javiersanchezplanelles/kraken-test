@@ -1,19 +1,24 @@
+import { ApolloQueryResult } from '@apollo/client';
 import Head from 'next/head';
 import { useState } from 'react';
-import client from '../apolloClient';
+import apolloClient from '../apolloClient';
 import { Layout } from '../components/Layout';
 import { ProductDetail } from '../components/ProductDetail';
-import type { Product as ProductType } from '../domain/product/product.types';
+import type {
+  ProductQueryResponse,
+  Product as ProductType,
+} from '../domain/product/product.types';
 import { PRODUCT_QUERY } from '../services/product.graphql';
 
 export async function getStaticProps() {
   try {
-    const { data, errors } = await client.query({
-      query: PRODUCT_QUERY,
-      variables: { id: 1 },
-    });
+    const { data, error }: ApolloQueryResult<ProductQueryResponse> =
+      await apolloClient.query({
+        query: PRODUCT_QUERY,
+        variables: { id: 1 },
+      });
 
-    if (errors) {
+    if (error) {
       return {
         notFound: true,
       };
