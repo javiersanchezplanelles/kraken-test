@@ -12,7 +12,7 @@ export interface ProductQueryResponse {
   Product: Product;
 }
 
-export interface Product {
+export interface Product extends ProductSpecifications {
   id: number;
   name: string;
   power: string;
@@ -20,11 +20,4 @@ export interface Product {
   price: number;
   quantity: number;
   img_url: string;
-  height: number;
-  width: number;
-  length: number;
-  colour: string;
-  brand: string;
-  weight: number;
-  model_code: string;
 }

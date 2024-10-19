@@ -52,7 +52,7 @@ export default function Product({ product }: Props) {
   return (
     <Layout productsOnBasket={productsOnBasket}>
       <Head>
-        <title>Product page</title>
+        <title>{product.name}</title>
       </Head>
       <ProductDetail
         product={product}
