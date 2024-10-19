@@ -7,28 +7,34 @@ import type { Product as ProductType } from '../domain/product/product.types';
 import { PRODUCT_QUERY } from '../services/product.graphql';
 
 export async function getStaticProps() {
-  const { data, errors } = await client.query({
-    query: PRODUCT_QUERY,
-    variables: { id: 1 },
-  });
+  try {
+    const { data, errors } = await client.query({
+      query: PRODUCT_QUERY,
+      variables: { id: 1 },
+    });
 
-  if (errors) {
+    if (errors) {
+      return {
+        notFound: true,
+      };
+    }
+
+    if (!data || !data.Product) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        product: data.Product,
+      },
+    };
+  } catch (error) {
     return {
       notFound: true,
     };
   }
-
-  if (!data || !data.Product) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      product: data.Product,
-    },
-  };
 }
 
 interface Props {
