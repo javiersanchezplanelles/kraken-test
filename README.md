@@ -68,3 +68,12 @@ Notes:
 - This has not been set up with any type of CSS-in-JS, but if that is something you would like to add, please feel free.
 
 Best of luck!
+
+## Notes and next steps
+
+- Add E2E testing for critical user journeys, such as rendering a 404 page when the product is not found.
+- The app is prepared to use environment variables, but a hardcoded URL for GraphQL has been used to make reviewing easier.
+- Make product id dynamic. Instead of being a hardcoded value, the product id will be obtained through the context in getStaticProps.
+- Implement internationalisation to allow for content translation (multiple packages help with this, such as i18next).
+- Add Sentry configuration to monitor the app.
+- Add Jitsu or Google Analytics to gather user metrics.
