@@ -1,5 +1,6 @@
 import { MockedProvider } from '@apollo/client/testing';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Product from '../pages/product';
 import { apolloMocks, productMock } from './mocks/product.mock';
 
@@ -19,11 +20,11 @@ describe('Product page', () => {
 
     expect(currentQuantity).toHaveTextContent('1');
 
-    fireEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
 
     expect(currentQuantity).toHaveTextContent('2');
 
-    fireEvent.click(decreaseQuantity);
+    await userEvent.click(decreaseQuantity);
 
     expect(currentQuantity).toHaveTextContent('1');
   });
@@ -33,13 +34,13 @@ describe('Product page', () => {
     const currentQuantity = screen.getByTitle('Current quantity');
     const addToBasketElement = screen.getByText('Add to cart');
 
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
 
     expect(currentQuantity).toHaveTextContent('4');
 
-    fireEvent.click(addToBasketElement);
+    await userEvent.click(addToBasketElement);
 
     const basketItems = screen.getByTitle('Basket items');
 
@@ -51,13 +52,13 @@ describe('Product page', () => {
     const currentQuantity = screen.getByTitle('Current quantity');
     const addToBasketElement = screen.getByText('Add to cart');
 
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
 
     expect(currentQuantity).toHaveTextContent('4');
 
-    fireEvent.click(addToBasketElement);
+    await userEvent.click(addToBasketElement);
 
     expect(currentQuantity).toHaveTextContent('1');
   });
@@ -66,19 +67,19 @@ describe('Product page', () => {
     const increaseQuantity = screen.getByText('+');
     const addToBasketElement = screen.getByText('Add to cart');
 
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
 
-    fireEvent.click(addToBasketElement);
+    await userEvent.click(addToBasketElement);
 
     const basketItems = screen.getByTitle('Basket items');
 
     expect(basketItems).toHaveTextContent('4');
 
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(increaseQuantity);
-    fireEvent.click(addToBasketElement);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(increaseQuantity);
+    await userEvent.click(addToBasketElement);
 
     expect(basketItems).toHaveTextContent('7');
   });
