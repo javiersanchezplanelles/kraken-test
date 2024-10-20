@@ -8,11 +8,6 @@ import { Price } from './Price';
 import { ProductImage } from './ProductImage';
 import { ProductSpecifications } from './ProductSpecifications';
 
-interface Props {
-  product: Product;
-  updateProductsOnBasket: Dispatch<SetStateAction<number>>;
-}
-
 const basePadding = css`
   padding: 0 20px;
 `;
@@ -83,6 +78,11 @@ const TopContentWrapper = styled.div`
     width: 70%;
   }
 `;
+
+interface Props {
+  product: Product;
+  updateProductsOnBasket: Dispatch<SetStateAction<number>>;
+}
 
 export const ProductDetail = ({ product, updateProductsOnBasket }: Props) => {
   const [productQuantity, setProductQuantity] = useState(1);

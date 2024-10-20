@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-interface Props {
-  heading: string;
-  content: string;
-}
-
 const Heading = styled.h2`
   font-weight: 500;
   margin-top: 0;
@@ -19,6 +14,11 @@ const ContentBlockWrapper = styled.div`
   padding: 20px;
   background-color: var(--hemocyanin);
 `;
+
+interface Props {
+  heading: string;
+  content: string;
+}
 
 export const ContentBlock = ({ heading, content }: Props) => {
   return (

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import type { ProductSpecifications as ProductSpecificationsType } from '../domain/product/product.types';
 
-interface Props {
-  content: ProductSpecificationsType;
-}
-
 const Heading = styled.h2`
   font-weight: 500;
   margin-top: 0;
@@ -26,6 +22,10 @@ const FlexWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
+interface Props {
+  content: ProductSpecificationsType;
+}
 
 export const ProductSpecifications = ({ content }: Props) => {
   return (
