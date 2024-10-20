@@ -71,6 +71,7 @@ Best of luck!
 
 ## Notes and next steps
 
+- The concurrently package has been added to be able to run multiple commands at once, in this case 'yarn server' and 'next dev'.
 - Add E2E testing for critical user journeys, such as rendering a 404 page when the product is not found.
 - The app is prepared to use environment variables, but a hardcoded URL for GraphQL has been used to make reviewing easier.
 - Make product id dynamic. Instead of being a hardcoded value, the product id will be obtained through the context in getStaticProps.
