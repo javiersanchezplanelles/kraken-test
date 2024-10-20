@@ -9,10 +9,6 @@ const Custom404Wrapper = styled.div`
   align-items: center;
   padding: 0 20px;
   text-align: center;
-
-  a {
-    max-width: 200px;
-  }
 `;
 
 const Custom404 = () => (

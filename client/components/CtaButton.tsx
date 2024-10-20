@@ -18,9 +18,14 @@ const StyledButton = styled.button`
   ${SharedStyles}
 `;
 
-const StyledLink = styled.a`
-  text-decoration: none;
-  ${SharedStyles};
+const LinkWrapper = styled.div`
+  max-width: 200px;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+    ${SharedStyles};
+  }
 `;
 
 interface Props {
@@ -31,9 +36,9 @@ interface Props {
 
 export const CtaButton = ({ text, handleClick, href }: Props) => {
   return href ? (
-    <Link href={href}>
-      <StyledLink>{text}</StyledLink>
-    </Link>
+    <LinkWrapper>
+      <Link href={href}>{text}</Link>
+    </LinkWrapper>
   ) : (
     <StyledButton onClick={handleClick}>{text}</StyledButton>
   );
