@@ -9,12 +9,6 @@ export default function Document() {
           type='text/css'
           href='https://static.octopuscdn.com/fonts/Gotham/fonts.min.css'
         />
-        <link
-          rel='icon'
-          type='image/png'
-          href='https://static.octopuscdn.com/favicons/favicon-32x32.png'
-          sizes='32x32'
-        ></link>
       </Head>
       <body>
         <Main />
