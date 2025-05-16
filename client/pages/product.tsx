@@ -4,6 +4,7 @@ import { useState } from 'react';
 import apolloClient from '../apolloClient';
 import { Layout } from '../components/Layout';
 import { ProductDetail } from '../components/ProductDetail';
+import { ProductReview } from '../components/ProductReview';
 import type {
   ProductQueryResponse,
   Product as ProductType,
@@ -58,6 +59,7 @@ export default function Product({ product }: Props) {
         product={product}
         updateProductsOnBasket={setProductsOnBasket}
       />
+      <ProductReview />
     </Layout>
   );
 }
