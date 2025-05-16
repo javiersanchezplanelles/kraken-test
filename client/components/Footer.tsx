@@ -15,9 +15,9 @@ export const Footer = () => {
   return (
     <FooterWrapper>
       <Text>
-        Octopus Energy Ltd is a company registered in England and Wales.
-        Registered number: 09263424. Registered office: 33 Holborn, London, EC1N
-        2HT. Trading office: 20-24 Boradwick Street, London, W1F 8HT
+        We are a registered company operating in the EU. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam
       </Text>
     </FooterWrapper>
   );

@@ -19,10 +19,10 @@ export const Header = ({ productsOnBasket }: Props) => {
   return (
     <HeaderWrapper>
       <Image
-        src='/octopus-logo.svg'
-        width={150}
-        height={150}
-        alt='Octopus logo'
+        src='/company-logo.jpg'
+        width={60}
+        height={60}
+        alt='Company logo'
       />
       <Basket productsAmount={productsOnBasket} />
     </HeaderWrapper>
