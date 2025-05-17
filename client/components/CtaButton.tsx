@@ -16,6 +16,12 @@ const SharedStyles = css`
 
 const StyledButton = styled.button`
   ${SharedStyles}
+
+  &:disabled {
+    background-color: var(--purpleHaze);
+    color: white;
+    cursor: auto;
+  }
 `;
 
 const LinkWrapper = styled.div`
@@ -32,14 +38,17 @@ interface Props {
   text: string;
   handleClick?: () => void;
   href?: string;
+  isDisabled?: boolean;
 }
 
-export const CtaButton = ({ text, handleClick, href }: Props) => {
+export const CtaButton = ({ text, handleClick, href, isDisabled }: Props) => {
   return href ? (
     <LinkWrapper>
       <Link href={href}>{text}</Link>
     </LinkWrapper>
   ) : (
-    <StyledButton onClick={handleClick}>{text}</StyledButton>
+    <StyledButton onClick={handleClick} disabled={isDisabled}>
+      {text}
+    </StyledButton>
   );
 };
