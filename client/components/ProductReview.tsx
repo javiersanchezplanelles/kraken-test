@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
-import { ContentBlock } from './ContentBlock';
+import { Review } from './Review';
 import { ReviewForm } from './ReviewForm';
 
 const basePadding = css`
@@ -45,35 +45,60 @@ const TopContentWrapper = styled.div`
 `;
 
 interface UserReview {
-  name: string;
+  author: string;
   content: string;
+  date: string;
 }
 
 export const ProductReview = () => {
-  const [userReviews, setUserReviews] = useState<UserReview[]>([
-    {
-      name: 'John Garcia',
-      content: 'I am so in love with this product!',
-    },
-  ]);
+  const [editReviewIndex, setEditReviewIndex] = useState<number | null>(null);
+  const [userReviews, setUserReviews] = useState<UserReview[] | null>(null);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty, isValid },
+    setValue,
+    formState: { isValid },
   } = useForm({
     mode: 'onChange',
   });
 
   const onSubmit = (data) => {
+    const todayDate = new Date().toLocaleDateString();
     const newReview = {
-      name: 'Anonymous',
+      author: data.author,
       content: data.review,
+      date: todayDate,
     };
 
-    setUserReviews((prev) => [...prev, newReview]);
+    if (editReviewIndex !== null) {
+      setUserReviews((prev) =>
+        prev.map((review, index) =>
+          index === editReviewIndex ? newReview : review
+        )
+      );
+      setEditReviewIndex(null);
+    } else {
+      if (userReviews) {
+        setUserReviews((prev) => [...prev, newReview]);
+      } else {
+        setUserReviews([newReview]);
+      }
+    }
+
     reset();
+  };
+
+  const handleOnEdit = (reviewIndex: number) => {
+    setValue('review', userReviews[reviewIndex].content, {
+      shouldValidate: true,
+    });
+    setEditReviewIndex(reviewIndex);
+  };
+
+  const handleOnDelete = (reviewIndex: number) => {
+    setUserReviews(userReviews.filter((_, index) => index !== reviewIndex));
   };
 
   return (
@@ -82,17 +107,21 @@ export const ProductReview = () => {
         <Heading>Customer feedback</Heading>
         <ReviewForm
           handleOnSubmit={handleSubmit(onSubmit)}
-          name='review'
+          textareaName='review'
+          inputName='author'
           register={register}
           isValid={isValid}
         />
       </TopContentWrapper>
       <ContentBlockWrapper>
-        {userReviews.map((review) => (
-          <ContentBlock
-            key={review.name}
-            heading={review.name}
+        {userReviews?.map((review, index) => (
+          <Review
+            key={review.author}
+            author={review.author}
             content={review.content}
+            date={review.date}
+            onEdit={() => handleOnEdit(index)}
+            onDelete={() => handleOnDelete(index)}
           />
         ))}
       </ContentBlockWrapper>
