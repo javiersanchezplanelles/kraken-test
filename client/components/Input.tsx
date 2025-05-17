@@ -1,12 +1,14 @@
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styled, { css } from 'styled-components';
+import { UserReview, UserReviewField } from '../domain/review/review.types';
+import { ErrorMessage } from './ErrorMessage';
 
 interface Props {
-  register: UseFormRegister<FieldValues>;
-  name: string;
+  register: UseFormRegister<UserReview>;
+  name: UserReviewField;
   type: string;
   placeholder?: string;
-  errors: FieldErrors<FieldValues>;
+  errors: FieldErrors<UserReview>;
 }
 
 const SharedStyles = css`
@@ -38,7 +40,9 @@ export const Input = ({ register, name, type, placeholder, errors }: Props) => {
           required: 'Please fill out this field',
         })}
       />
-      {errors[name] && <p>{errors[name].message}</p>}
+      {typeof errors[name]?.message === 'string' && (
+        <ErrorMessage content={errors[name]?.message} />
+      )}
     </>
   );
 };

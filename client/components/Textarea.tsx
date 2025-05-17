@@ -1,5 +1,7 @@
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
+import { UserReview, UserReviewField } from '../domain/review/review.types';
+import { ErrorMessage } from './ErrorMessage';
 
 const StyledTextarea = styled.textarea`
   border-radius: 15px;
@@ -11,9 +13,9 @@ const StyledTextarea = styled.textarea`
 `;
 
 interface Props {
-  register: UseFormRegister<FieldValues>;
-  name: string;
-  errors: FieldErrors<FieldValues>;
+  register: UseFormRegister<UserReview>;
+  name: UserReviewField;
+  errors: FieldErrors<UserReview>;
 }
 
 export const Textarea = ({ register, name, errors }: Props) => {
@@ -28,7 +30,9 @@ export const Textarea = ({ register, name, errors }: Props) => {
           },
         })}
       />
-      {errors[name] && <p>{errors[name].message}</p>}
+      {typeof errors[name]?.message === 'string' && (
+        <ErrorMessage content={errors[name]?.message} />
+      )}
     </>
   );
 };

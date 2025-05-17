@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
+import { UserReview } from '../domain/review/review.types';
 import { Review } from './Review';
 import { ReviewForm } from './ReviewForm';
 
@@ -44,15 +45,9 @@ const TopContentWrapper = styled.div`
   }
 `;
 
-interface UserReview {
-  author: string;
-  content: string;
-  date: string;
-}
-
 export const ProductReview = () => {
   const [editReviewIndex, setEditReviewIndex] = useState<number | null>(null);
-  const [userReviews, setUserReviews] = useState<UserReview[] | null>(null);
+  const [userReviews, setUserReviews] = useState<UserReview[] | null>([]);
 
   const {
     register,
@@ -60,38 +55,41 @@ export const ProductReview = () => {
     reset,
     setValue,
     formState: { errors },
-  } = useForm({
+  } = useForm<UserReview>({
     mode: 'onChange',
+    defaultValues: {
+      author: '',
+      review: '',
+      date: '',
+    },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<UserReview> = (data) => {
     const todayDate = new Date().toLocaleDateString();
     const newReview = {
       author: data.author,
-      content: data.review,
+      review: data.review,
       date: todayDate,
     };
 
-    if (editReviewIndex !== null) {
-      setUserReviews((prev) =>
-        prev.map((review, index) =>
+    setUserReviews((prev) => {
+      if (editReviewIndex !== null) {
+        return prev.map((review, index) =>
           index === editReviewIndex ? newReview : review
-        )
-      );
-      setEditReviewIndex(null);
-    } else {
-      if (userReviews) {
-        setUserReviews((prev) => [...prev, newReview]);
-      } else {
-        setUserReviews([newReview]);
+        );
       }
-    }
+      return [...prev, newReview];
+    });
 
+    setEditReviewIndex(null);
     reset();
   };
-  console.log('errors', errors);
+
   const handleOnEdit = (reviewIndex: number) => {
-    setValue('review', userReviews[reviewIndex].content, {
+    setValue('author', userReviews[reviewIndex].author, {
+      shouldValidate: true,
+    });
+    setValue('review', userReviews[reviewIndex].review, {
       shouldValidate: true,
     });
     setEditReviewIndex(reviewIndex);
@@ -118,7 +116,7 @@ export const ProductReview = () => {
           <Review
             key={review.author}
             author={review.author}
-            content={review.content}
+            content={review.review}
             date={review.date}
             onEdit={() => handleOnEdit(index)}
             onDelete={() => handleOnDelete(index)}

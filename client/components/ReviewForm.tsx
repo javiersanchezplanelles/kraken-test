@@ -1,14 +1,15 @@
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { UserReview, UserReviewField } from '../domain/review/review.types';
 import { CtaButton } from './CtaButton';
 import { Input } from './Input';
 import { Textarea } from './Textarea';
 
 interface Props {
   handleOnSubmit: (e?: React.BaseSyntheticEvent) => void;
-  register: UseFormRegister<FieldValues>;
-  textareaName: string;
-  inputName: string;
-  errors: FieldErrors<FieldValues>;
+  register: UseFormRegister<UserReview>;
+  textareaName: UserReviewField;
+  inputName: UserReviewField;
+  errors: FieldErrors<UserReview>;
 }
 
 export const ReviewForm = ({
