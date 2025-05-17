@@ -1,12 +1,12 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
 interface Props {
   register: UseFormRegister<FieldValues>;
   name: string;
   type: string;
-  isDisabled?: boolean;
   placeholder?: string;
+  errors: FieldErrors<FieldValues>;
 }
 
 const SharedStyles = css`
@@ -28,19 +28,17 @@ const StyledInput = styled.input`
   ${SharedStyles}
 `;
 
-export const Input = ({
-  register,
-  name,
-  type,
-  isDisabled,
-  placeholder,
-}: Props) => {
+export const Input = ({ register, name, type, placeholder, errors }: Props) => {
   return (
-    <StyledInput
-      type={type}
-      disabled={isDisabled}
-      placeholder={placeholder}
-      {...register(name)}
-    />
+    <>
+      <StyledInput
+        type={type}
+        placeholder={placeholder}
+        {...register(name, {
+          required: 'Please fill out this field',
+        })}
+      />
+      {errors[name] && <p>{errors[name].message}</p>}
+    </>
   );
 };

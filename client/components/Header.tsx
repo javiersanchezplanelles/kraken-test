@@ -9,6 +9,7 @@ const HeaderWrapper = styled.header`
   max-height: 60px;
   height: 100%;
   padding: 0 20px;
+  margin-top: 10px;
 `;
 
 interface Props {

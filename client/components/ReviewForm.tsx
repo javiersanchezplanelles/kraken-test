@@ -1,4 +1,4 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import { CtaButton } from './CtaButton';
 import { Input } from './Input';
 import { Textarea } from './Textarea';
@@ -8,7 +8,7 @@ interface Props {
   register: UseFormRegister<FieldValues>;
   textareaName: string;
   inputName: string;
-  isValid: boolean;
+  errors: FieldErrors<FieldValues>;
 }
 
 export const ReviewForm = ({
@@ -16,7 +16,7 @@ export const ReviewForm = ({
   register,
   textareaName,
   inputName,
-  isValid,
+  errors,
 }: Props) => {
   return (
     <form onSubmit={handleOnSubmit}>
@@ -25,9 +25,10 @@ export const ReviewForm = ({
         register={register}
         name={inputName}
         placeholder='Your public name'
+        errors={errors}
       />
-      <Textarea register={register} name={textareaName} />
-      <CtaButton text='Submit' isDisabled={!isValid} />
+      <Textarea register={register} name={textareaName} errors={errors} />
+      <CtaButton text='Submit' />
     </form>
   );
 };

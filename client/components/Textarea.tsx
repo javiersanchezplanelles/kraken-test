@@ -1,4 +1,4 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
 const StyledTextarea = styled.textarea`
@@ -13,15 +13,22 @@ const StyledTextarea = styled.textarea`
 interface Props {
   register: UseFormRegister<FieldValues>;
   name: string;
+  errors: FieldErrors<FieldValues>;
 }
 
-export const Textarea = ({ register, name }: Props) => {
+export const Textarea = ({ register, name, errors }: Props) => {
   return (
-    <StyledTextarea
-      {...register(name, {
-        required: true,
-        minLength: 50,
-      })}
-    />
+    <>
+      <StyledTextarea
+        {...register(name, {
+          required: 'Please fill out this field',
+          minLength: {
+            value: 50,
+            message: 'Please ensure the text is at least 50 characters.',
+          },
+        })}
+      />
+      {errors[name] && <p>{errors[name].message}</p>}
+    </>
   );
 };

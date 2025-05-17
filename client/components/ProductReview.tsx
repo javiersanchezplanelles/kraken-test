@@ -59,7 +59,7 @@ export const ProductReview = () => {
     handleSubmit,
     reset,
     setValue,
-    formState: { isValid },
+    formState: { errors },
   } = useForm({
     mode: 'onChange',
   });
@@ -89,7 +89,7 @@ export const ProductReview = () => {
 
     reset();
   };
-
+  console.log('errors', errors);
   const handleOnEdit = (reviewIndex: number) => {
     setValue('review', userReviews[reviewIndex].content, {
       shouldValidate: true,
@@ -110,7 +110,7 @@ export const ProductReview = () => {
           textareaName='review'
           inputName='author'
           register={register}
-          isValid={isValid}
+          errors={errors}
         />
       </TopContentWrapper>
       <ContentBlockWrapper>
