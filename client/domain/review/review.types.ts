@@ -1,4 +1,5 @@
 export interface UserReview {
+  id: number;
   author: string;
   review: string;
   date: string;

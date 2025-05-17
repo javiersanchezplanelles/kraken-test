@@ -67,6 +67,7 @@ export const ProductReview = () => {
   const onSubmit: SubmitHandler<UserReview> = (data) => {
     const todayDate = new Date().toLocaleDateString();
     const newReview = {
+      id: userReviews.length + 1,
       author: data.author,
       review: data.review,
       date: todayDate,
@@ -114,7 +115,7 @@ export const ProductReview = () => {
       <ContentBlockWrapper>
         {userReviews?.map((review, index) => (
           <Review
-            key={review.author}
+            key={review.id}
             author={review.author}
             content={review.review}
             date={review.date}

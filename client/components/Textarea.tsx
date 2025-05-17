@@ -23,7 +23,7 @@ export const Textarea = ({ register, name, errors }: Props) => {
     <>
       <StyledTextarea
         {...register(name, {
-          required: 'Please fill out this field',
+          required: 'Please leave your review',
           minLength: {
             value: 50,
             message: 'Please ensure the text is at least 50 characters.',

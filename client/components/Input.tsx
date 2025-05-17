@@ -37,7 +37,7 @@ export const Input = ({ register, name, type, placeholder, errors }: Props) => {
         type={type}
         placeholder={placeholder}
         {...register(name, {
-          required: 'Please fill out this field',
+          required: 'Please enter your name',
         })}
       />
       {typeof errors[name]?.message === 'string' && (
