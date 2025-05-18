@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { localiseDate } from '../domain/date/date.utils';
+import { ContentBlockWrapper } from './LayoutWrappers';
 
 const Author = styled.h3`
   font-weight: 500;
@@ -17,11 +18,6 @@ const Date = styled.p`
   font-weight: 300;
   font-size: 12px;
   margin-bottom: 8px;
-`;
-
-const ContentBlockWrapper = styled.div`
-  padding: 20px;
-  background-color: var(--hemocyanin);
 `;
 
 const StyledButton = styled.button`

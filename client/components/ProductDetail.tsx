@@ -4,9 +4,15 @@ import { Product } from '../domain/product/product.types';
 import { ContentBlock } from './ContentBlock';
 import { Counter } from './Counter';
 import { CtaButton } from './CtaButton';
+import {
+  FlexColumnWrapper,
+  MobileMarginTop,
+  TopContentWrapper,
+} from './LayoutWrappers';
 import { Price } from './Price';
 import { ProductImage } from './ProductImage';
 import { ProductSpecifications } from './ProductSpecifications';
+import { FirstHeading } from './Typography';
 
 const basePadding = css`
   padding: 0 20px;
@@ -36,46 +42,10 @@ const Subheading = styled.p`
   margin-top: 10px;
 `;
 
-const Heading = styled.h1`
-  margin-bottom: 8px;
-  font-weight: 500;
-
-  @media (min-width: 768px) {
-    margin-top: 0;
-  }
-`;
-
 const FlexWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
     height: 100%;
-  }
-`;
-
-const FlexColumnWrapper = styled.div`
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: space-between;
-    width: 70%;
-  }
-
-  @media (min-width: 1400px) {
-    width: 40%;
-  }
-`;
-
-const ContentBlockWrapper = styled.div`
-  @media (max-width: 768px) {
-    margin-top: 20px;
-  }
-`;
-
-const TopContentWrapper = styled.div`
-  ${basePadding}
-  @media (min-width: 768px) {
-    width: 70%;
   }
 `;
 
@@ -106,7 +76,7 @@ export const ProductDetail = ({ product, updateProductsOnBasket }: Props) => {
       </ProductImageWrapper>
       <FlexColumnWrapper>
         <TopContentWrapper>
-          <Heading>{product.name}</Heading>
+          <FirstHeading>{product.name}</FirstHeading>
           <Subheading>
             {product.power} // Packet of {product.quantity}
           </Subheading>
@@ -120,9 +90,9 @@ export const ProductDetail = ({ product, updateProductsOnBasket }: Props) => {
           </PriceCounterWrapper>
           <CtaButton text='Add to cart' handleClick={handleAddToBasket} />
         </TopContentWrapper>
-        <ContentBlockWrapper>
+        <MobileMarginTop>
           <ContentBlock heading='Description' content={product.description} />
-        </ContentBlockWrapper>
+        </MobileMarginTop>
         <ProductSpecifications
           content={{
             height,

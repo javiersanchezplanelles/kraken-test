@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ContentBlockWrapper } from './LayoutWrappers';
 
 const Heading = styled.h2`
   font-weight: 500;
@@ -8,11 +9,6 @@ const Heading = styled.h2`
 const Text = styled.p`
   line-height: 1.7;
   font-weight: 300;
-`;
-
-const ContentBlockWrapper = styled.div`
-  padding: 20px;
-  background-color: var(--hemocyanin);
 `;
 
 interface Props {
