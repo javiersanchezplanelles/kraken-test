@@ -9,7 +9,7 @@ const basePadding = css`
   padding: 20px;
 `;
 
-const Heading = styled.h1`
+const Heading = styled.h2`
   margin-bottom: 8px;
   font-weight: 500;
 
@@ -47,7 +47,7 @@ const TopContentWrapper = styled.div`
 
 export const ProductReview = () => {
   const [editReviewIndex, setEditReviewIndex] = useState<number | null>(null);
-  const [userReviews, setUserReviews] = useState<UserReview[] | null>([]);
+  const [userReviews, setUserReviews] = useState<UserReview[]>([]);
 
   const {
     register,

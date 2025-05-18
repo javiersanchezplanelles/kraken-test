@@ -10,23 +10,26 @@ const StyledTextarea = styled.textarea`
   background-color: var(--ice);
   border: 1px solid var(--syphon);
   font-size: 16px;
+  padding: 8px;
 `;
 
 interface Props {
   register: UseFormRegister<UserReview>;
   name: UserReviewField;
   errors: FieldErrors<UserReview>;
+  placeholder: string;
 }
 
-export const Textarea = ({ register, name, errors }: Props) => {
+export const Textarea = ({ register, name, errors, placeholder }: Props) => {
   return (
     <>
       <StyledTextarea
+        placeholder={placeholder}
         {...register(name, {
           required: 'Please leave your review',
           minLength: {
             value: 50,
-            message: 'Please ensure the text is at least 50 characters.',
+            message: 'Please ensure the text is at least 50 characters',
           },
         })}
       />

@@ -28,7 +28,12 @@ export const ReviewForm = ({
         placeholder='Your public name'
         errors={errors}
       />
-      <Textarea register={register} name={textareaName} errors={errors} />
+      <Textarea
+        register={register}
+        name={textareaName}
+        errors={errors}
+        placeholder='Write your thoughts here'
+      />
       <CtaButton text='Submit' />
     </form>
   );

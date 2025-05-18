@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { localiseDate } from '../domain/date/date.utils';
 
-const Author = styled.h2`
+const Author = styled.h3`
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
@@ -45,7 +45,7 @@ interface Props {
 
 export const Review = ({ author, content, date, onEdit, onDelete }: Props) => {
   return (
-    <ContentBlockWrapper>
+    <ContentBlockWrapper data-testid='reviewContent'>
       <Author>{author}</Author>
       <Date>{localiseDate(date)}</Date>
       <Text>{content}</Text>
