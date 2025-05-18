@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
+  margin-top: 8px;
   padding: 25px 20px;
   color: var(--purpleHaze);
   background-color: var(--hemocyanin);
