@@ -14,11 +14,7 @@ const Text = styled.p`
 export const Footer = () => {
   return (
     <FooterWrapper>
-      <Text>
-        We are a registered company operating in the EU. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam
-      </Text>
+      <Text>We are a registered company operating in the EU.</Text>
     </FooterWrapper>
   );
 };
