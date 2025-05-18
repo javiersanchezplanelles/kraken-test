@@ -97,6 +97,10 @@ export const ProductReview = () => {
   };
 
   const handleOnDelete = (reviewIndex: number) => {
+    if (editReviewIndex === reviewIndex) {
+      reset();
+      setEditReviewIndex(null);
+    }
     setUserReviews(userReviews.filter((_, index) => index !== reviewIndex));
   };
 
