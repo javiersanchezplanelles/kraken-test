@@ -32,6 +32,8 @@ cd client && yarn test
 
 ## ToDos:
 
+- Create a reusable Text component.
+- Add test for editing a review path.
 - Add E2E testing for critical user journeys, such as rendering a 404 page when the product is not found.
 - Make product id dynamic. Instead of being a hardcoded value, the product id will be obtained through the context in getStaticProps.
 - Implement internationalisation to allow for content translation (multiple packages help with this, such as i18next).
