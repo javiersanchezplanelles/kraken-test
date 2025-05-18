@@ -118,7 +118,7 @@ describe('Product page', () => {
         name: 'Submit',
       });
 
-      userEvent.click(submitButton);
+      await userEvent.click(submitButton);
 
       const errorMessage = await screen.findByText('Please enter your name');
 
@@ -130,7 +130,7 @@ describe('Product page', () => {
         name: 'Submit',
       });
 
-      userEvent.click(submitButton);
+      await userEvent.click(submitButton);
 
       const errorMessage = await screen.findByText('Please leave your review');
 
@@ -144,9 +144,9 @@ describe('Product page', () => {
         name: 'Submit',
       });
 
-      userEvent.type(nameInput, author);
-      userEvent.type(textInput, shortReview);
-      userEvent.click(submitButton);
+      await userEvent.type(nameInput, author);
+      await userEvent.type(textInput, shortReview);
+      await userEvent.click(submitButton);
 
       const shortReviewFeedback = await screen.findByText(
         'Please ensure the text is at least 50 characters'
